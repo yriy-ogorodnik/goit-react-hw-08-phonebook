@@ -1,38 +1,22 @@
+import { AppBar } from 'components/AppBar/AppBar';
 import { Suspense } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import {  Header, Main, Nav, NavLinkSt } from './Layout.styled';
+import { Outlet } from 'react-router-dom';
+import { StyledContainer, StyledSection } from './Layout.styled';
+// import { Header } from 'components/Header';
 
-
-
-const Layout = () => {
-  const location = useLocation();
-  const from = location?.state?.from ?? '/';
+export const Layout = () => {
   return (
-    <>
-      <Header>
-        <Nav>
-          <ul>
-            <li>
-              <NavLinkSt to="/">Home</NavLinkSt>
-            </li>
-            <li>
-              <NavLinkSt to="/tweets" state={{ from: from }}>
-                Tweets
-              </NavLinkSt>
-            </li>
-          </ul>
-        </Nav>
-      </Header>
-      <div>
-        <Main>
+    <StyledContainer>
+      {/* <Header /> */}
+      <AppBar />
+      <main>
+        <StyledSection>
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
-        </Main>
-        <footer></footer>
-      </div>
-    </>
+        </StyledSection>
+      </main>
+      <footer></footer>
+    </StyledContainer>
   );
 };
-
-export default Layout;
