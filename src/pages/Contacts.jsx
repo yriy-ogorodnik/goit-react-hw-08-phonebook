@@ -10,6 +10,7 @@ import { StyledContainer, StyledFormWrapper } from './Contacts.styled';
 
 import { Typography } from '@mui/material';
 import { selectToken } from 'redux/auth/selectors';
+import AddContact from 'components/AddContact';
 
 const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -33,7 +34,7 @@ const Contacts = () => {
           <Typography variant="h4" component="h1" mt={2} mb={2}>
             contacts
           </Typography>
-
+          <AddContact />
           <Filter />
           {isLoading && !error && <h3>Request in progress...</h3>}
           {error && <p>{error}</p>}
